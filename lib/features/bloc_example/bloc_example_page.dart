@@ -11,21 +11,66 @@ class BlocExamplePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Bloc Example'),
       ),
-      body: BlocBuilder<ExampleBloc, ExampleState>(
-        builder: (context, state) {
-          if (state is ExampleStateData) {
-            return ListView.builder(
-              itemCount: state.names.length,
-              itemBuilder: (context, index) {
-                final name = state.names[index];
-                return ListTile(
-                  title: Text(name),
+      body: BlocListener<ExampleBloc, ExampleState>(
+        listener: (context, state) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Lista carregada'),
+            ),
+          );
+        },
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            BlocConsumer<ExampleBloc, ExampleState>(
+              listener: (context, state) {},
+              builder: (_, state) {
+                if (state is ExampleStateData) {
+                  return Text(
+                    'Total de nomes é ${state.names.length}',
+                  );
+                }
+                return SizedBox.shrink();
+              },
+            ),
+            BlocSelector<ExampleBloc, ExampleState, bool>(
+              selector: (state) {
+                if (state is ExampleStateInitial) {
+                  return true;
+                }
+                return false;
+              },
+              builder: (context, showLoader) {
+                if (showLoader) {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+                return SizedBox.shrink();
+              },
+            ),
+            BlocSelector<ExampleBloc, ExampleState, List<String>>(
+              selector: (state) {
+                if (state is ExampleStateData) {
+                  return state.names;
+                }
+                return [];
+              },
+              builder: (context, names) {
+                return ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: names.length,
+                  itemBuilder: (context, index) {
+                    final name = names[index];
+                    return ListTile(
+                      title: Text(name),
+                    );
+                  },
                 );
               },
-            );
-          }
-          return SizedBox.shrink();
-        },
+            ),
+          ],
+        ),
       ),
     );
   }
