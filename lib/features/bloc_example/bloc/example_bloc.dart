@@ -42,7 +42,7 @@ class ExampleBloc extends Bloc<ExampleEvent, ExampleState> {
     Emitter<ExampleState> emit,
   ) async {
     final names = ['Eduardo', 'Antonio', 'Jennifer', 'Marina'];
-    await Future.delayed(Duration(seconds: 4));
+    await Future.delayed(const Duration(seconds: 4));
     emit(ExampleStateData(names: names));
   }
 }

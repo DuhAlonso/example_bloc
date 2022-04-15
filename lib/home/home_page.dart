@@ -12,11 +12,18 @@ class HomePage extends StatelessWidget {
       body: Column(
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               button(
                 label: 'Example',
                 onPressed: () {
                   Navigator.of(context).pushNamed('/bloc/example');
+                },
+              ),
+              button(
+                label: 'Example Freezed',
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/bloc/example_freezed');
                 },
               ),
             ],
@@ -36,9 +43,11 @@ Widget button({required String label, required Function onPressed}) {
       },
       child: Text(
         label,
-        style: TextStyle(fontSize: 20),
+        textAlign: TextAlign.center,
+        style: const TextStyle(fontSize: 20),
       ),
-      style: ElevatedButton.styleFrom(minimumSize: Size(150, 150)),
+      style: ElevatedButton.styleFrom(
+          minimumSize: const Size(150, 150), maximumSize: const Size(150, 150)),
     ),
   );
 }

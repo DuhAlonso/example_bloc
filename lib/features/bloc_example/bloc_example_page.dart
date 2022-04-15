@@ -15,12 +15,12 @@ class BlocExamplePage extends StatelessWidget {
         onPressed: () {
           context.read<ExampleBloc>().add(ExampleAdddNameEvent(name: 'Alonso'));
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
       body: BlocListener<ExampleBloc, ExampleState>(
         listener: (context, state) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
+            const SnackBar(
               content: Text('Lista carregada'),
             ),
           );
@@ -36,7 +36,7 @@ class BlocExamplePage extends StatelessWidget {
                     'Total de nomes é ${state.names.length}',
                   );
                 }
-                return SizedBox.shrink();
+                return const SizedBox.shrink();
               },
             ),
             BlocSelector<ExampleBloc, ExampleState, bool>(
@@ -48,11 +48,11 @@ class BlocExamplePage extends StatelessWidget {
               },
               builder: (context, showLoader) {
                 if (showLoader) {
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
                 }
-                return SizedBox.shrink();
+                return const SizedBox.shrink();
               },
             ),
             BlocSelector<ExampleBloc, ExampleState, List<String>>(
