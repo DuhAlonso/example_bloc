@@ -37,8 +37,14 @@ class HomePage extends StatelessWidget {
                   Navigator.of(context).pushNamed('/contacts/list');
                 },
               ),
+              button(
+                label: 'Register',
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/contact/register');
+                },
+              ),
             ],
-          )
+          ),
         ],
       ),
     );

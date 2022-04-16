@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:bloc/bloc.dart';
 import 'package:contact_book/models/contact_model.dart';
 import 'package:contact_book/repositories/contacts_repository.dart';
@@ -17,9 +15,20 @@ class ContactListBloc extends Bloc<ContactListEvent, ContactListState> {
     on<_ContactListEventListAllContacts>(_findAll);
   }
 
-  Future<void> _findAll(_ContactListEventListAllContacts event,
-      Emitter<ContactListState> emit) async {
-    final contacts = await _repository.listAllContacts();
-    emit(ContactListState.data(contacts: contacts));
+  Future<void> _findAll(
+    _ContactListEventListAllContacts event,
+    Emitter<ContactListState> emit,
+  ) async {
+    try {
+      emit(ContactListState.loading());
+      final contacts = await _repository.listAllContacts();
+      await Future.delayed(Duration(seconds: 1));
+      //throw Exception();
+      emit(ContactListState.data(contacts: contacts));
+    } catch (e) {
+      // print(e);
+      // print(s);
+      emit(ContactListState.error(error: 'Erro ao buscar contatos'));
+    }
   }
 }
