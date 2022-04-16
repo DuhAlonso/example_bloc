@@ -27,6 +27,17 @@ class HomePage extends StatelessWidget {
                 },
               ),
             ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              button(
+                label: 'Contacts',
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/contacts/list');
+                },
+              ),
+            ],
           )
         ],
       ),
