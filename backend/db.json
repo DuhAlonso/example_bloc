@@ -1,10 +1,1 @@
-{
-    "contacts": [
-        {
-            "id": "sffsfsfgbvefeffs",
-            "name": "Eduardo Alonso",
-            "email": "duhalonso.dev@gmail.com"
-        }
-        
-    ]
-}
+{"contacts":[{"id":"sffsfsfgbvefeffs","name":"Eduardo Alonso","email":"duhalonso.dev@gmail.com"},{"id":"3cd51830-be67-11ec-abd8-b990ff6094b4","name":"Antonio","email":"antonio@gmail.com"},{"id":"208228c0-be68-11ec-abd8-b990ff6094b4","name":"Joao","email":"email"},{"id":"c7f9fcb0-be6b-11ec-abd8-b990ff6094b4","name":"Alonso","email":"a"},{"id":"d6c5fb40-be6b-11ec-abd8-b990ff6094b4","name":"nome","email":"email"},{"id":"8b3192b0-be6c-11ec-abd8-b990ff6094b4","name":"teste","email":"emailteste"}]}

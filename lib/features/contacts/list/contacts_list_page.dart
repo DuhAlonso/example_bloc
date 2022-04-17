@@ -1,4 +1,5 @@
 import 'package:contact_book/features/contacts/list/bloc/contact_list_bloc.dart';
+import 'package:contact_book/features/contacts/register/bloc/contact_register_bloc.dart';
 import 'package:contact_book/models/contact_model.dart';
 import 'package:contact_book/widgets/loader.dart';
 import 'package:flutter/material.dart';
@@ -14,10 +15,13 @@ class ContactsListPage extends StatelessWidget {
         title: const Text('Contacts Page'),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context).pushNamed('contact/register');
+        onPressed: () async {
+          await Navigator.of(context).pushNamed('/contact/register');
+          context
+              .read<ContactListBloc>()
+              .add(const ContactListEvent.listAllContacts());
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
       body: BlocListener<ContactListBloc, ContactListState>(
         listenWhen: (previous, current) {
@@ -64,19 +68,23 @@ class ContactsListPage extends StatelessWidget {
                         );
                       },
                       builder: (context, contacts) {
-                        return ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: contacts.length,
-                          itemBuilder: (context, index) {
-                            return ListTile(
-                              onTap: () {
-                                Navigator.of(context)
-                                    .pushNamed('/contact/update');
-                              },
-                              title: Text(contacts[index].name),
-                              subtitle: Text(contacts[index].email),
-                            );
-                          },
+                        return RefreshIndicator(
+                          onRefresh: () async => context.read<ContactListBloc>()
+                            ..add(const ContactListEvent.listAllContacts()),
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: contacts.length,
+                            itemBuilder: (context, index) {
+                              return ListTile(
+                                onTap: () {
+                                  Navigator.of(context)
+                                      .pushNamed('/contact/update');
+                                },
+                                title: Text(contacts[index].name),
+                                subtitle: Text(contacts[index].email),
+                              );
+                            },
+                          ),
                         );
                       },
                     )

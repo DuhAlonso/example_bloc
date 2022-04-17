@@ -4,6 +4,7 @@ import 'package:contact_book/features/bloc_example/bloc_freezed/example_freezed_
 import 'package:contact_book/features/bloc_example/bloc_freezed_example.dart';
 import 'package:contact_book/features/contacts/list/bloc/contact_list_bloc.dart';
 import 'package:contact_book/features/contacts/list/contacts_list_page.dart';
+import 'package:contact_book/features/contacts/register/bloc/contact_register_bloc.dart';
 import 'package:contact_book/features/contacts/register/contact_register_page.dart';
 import 'package:contact_book/features/contacts/update/contact_update_page.dart';
 import 'package:contact_book/home/home_page.dart';
@@ -32,11 +33,14 @@ void main() {
         '/contacts/list': (_) => BlocProvider(
               create: (context) => ContactListBloc(
                 repository: context.read<ContactsRepository>(),
-              )..add(ContactListEvent.listAllContacts()),
+              )..add(const ContactListEvent.listAllContacts()),
               child: const ContactsListPage(),
             ),
-        '/contact/register': (_) => ContactRegisterPage(),
-        '/contact/update': (_) => ContactUpdatePage(),
+        '/contact/register': (context) => BlocProvider(
+            create: (context) =>
+                ContactRegisterBloc(repository: context.read()),
+            child: const ContactRegisterPage()),
+        '/contact/update': (_) => const ContactUpdatePage(),
         '/contact_cubit': (_) => const HomePage(),
       },
     ),
