@@ -1,3 +1,4 @@
+import 'package:contact_book/features/contacts/delete/bloc/bloc/contact_delete_bloc.dart';
 import 'package:contact_book/features/contacts/list/bloc/contact_list_bloc.dart';
 import 'package:contact_book/models/contact_model.dart';
 import 'package:contact_book/widgets/loader.dart';
@@ -86,6 +87,23 @@ class ContactsListPage extends StatelessWidget {
                                 },
                                 title: Text(contact.name),
                                 subtitle: Text(contact.email),
+                                trailing: IconButton(
+                                    onPressed: () async {
+                                      context.read<ContactDeleteBloc>().add(
+                                            ContactDeleteEvent.delete(
+                                              id: contact.id!,
+                                              name: contact.name,
+                                              email: contact.email,
+                                            ),
+                                          );
+                                      context.read<ContactListBloc>().add(
+                                          const ContactListEvent
+                                              .listAllContacts());
+                                    },
+                                    icon: const Icon(
+                                      Icons.delete_forever_rounded,
+                                      color: Colors.red,
+                                    )),
                               );
                             },
                           ),

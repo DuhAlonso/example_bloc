@@ -2,6 +2,7 @@ import 'package:contact_book/features/bloc_example/bloc/example_bloc.dart';
 import 'package:contact_book/features/bloc_example/bloc_example_page.dart';
 import 'package:contact_book/features/bloc_example/bloc_freezed/example_freezed_bloc.dart';
 import 'package:contact_book/features/bloc_example/bloc_freezed_example.dart';
+import 'package:contact_book/features/contacts/delete/bloc/bloc/contact_delete_bloc.dart';
 import 'package:contact_book/features/contacts/list/bloc/contact_list_bloc.dart';
 import 'package:contact_book/features/contacts/list/contacts_list_page.dart';
 import 'package:contact_book/features/contacts/register/bloc/contact_register_bloc.dart';
@@ -32,10 +33,19 @@ void main() {
                 )),
               child: const BlocFreezedExample(),
             ),
-        '/contacts/list': (_) => BlocProvider(
-              create: (context) => ContactListBloc(
-                repository: context.read<ContactsRepository>(),
-              )..add(const ContactListEvent.listAllContacts()),
+        '/contacts/list': (_) => MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                  create: (context) => ContactListBloc(
+                    repository: context.read<ContactsRepository>(),
+                  )..add(const ContactListEvent.listAllContacts()),
+                ),
+                BlocProvider(
+                  create: (context) => ContactDeleteBloc(
+                    repository: context.read<ContactsRepository>(),
+                  ),
+                ),
+              ],
               child: const ContactsListPage(),
             ),
         '/contact/register': (context) => BlocProvider(
