@@ -6,8 +6,10 @@ import 'package:contact_book/features/contacts/list/bloc/contact_list_bloc.dart'
 import 'package:contact_book/features/contacts/list/contacts_list_page.dart';
 import 'package:contact_book/features/contacts/register/bloc/contact_register_bloc.dart';
 import 'package:contact_book/features/contacts/register/contact_register_page.dart';
+import 'package:contact_book/features/contacts/update/bloc/bloc/contact_update_bloc.dart';
 import 'package:contact_book/features/contacts/update/contact_update_page.dart';
 import 'package:contact_book/home/home_page.dart';
+import 'package:contact_book/models/contact_model.dart';
 import 'package:contact_book/repositories/contacts_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -40,7 +42,16 @@ void main() {
             create: (context) =>
                 ContactRegisterBloc(repository: context.read()),
             child: const ContactRegisterPage()),
-        '/contact/update': (_) => const ContactUpdatePage(),
+        '/contact/update': (context) {
+          final contact =
+              ModalRoute.of(context)?.settings.arguments as ContactModel;
+          return BlocProvider(
+            create: (context) => ContactUpdateBloc(repository: context.read()),
+            child: ContactUpdatePage(
+              conatct: contact,
+            ),
+          );
+        },
         '/contact_cubit': (_) => const HomePage(),
       },
     ),

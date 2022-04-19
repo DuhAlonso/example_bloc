@@ -1,5 +1,4 @@
 import 'package:contact_book/features/contacts/list/bloc/contact_list_bloc.dart';
-import 'package:contact_book/features/contacts/register/bloc/contact_register_bloc.dart';
 import 'package:contact_book/models/contact_model.dart';
 import 'package:contact_book/widgets/loader.dart';
 import 'package:flutter/material.dart';
@@ -75,13 +74,18 @@ class ContactsListPage extends StatelessWidget {
                             shrinkWrap: true,
                             itemCount: contacts.length,
                             itemBuilder: (context, index) {
+                              final contact = contacts[index];
                               return ListTile(
-                                onTap: () {
-                                  Navigator.of(context)
-                                      .pushNamed('/contact/update');
+                                onTap: () async {
+                                  await Navigator.of(context).pushNamed(
+                                      '/contact/update',
+                                      arguments: contact);
+
+                                  context.read<ContactListBloc>().add(
+                                      const ContactListEvent.listAllContacts());
                                 },
-                                title: Text(contacts[index].name),
-                                subtitle: Text(contacts[index].email),
+                                title: Text(contact.name),
+                                subtitle: Text(contact.email),
                               );
                             },
                           ),
