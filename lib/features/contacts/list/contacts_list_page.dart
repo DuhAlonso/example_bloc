@@ -36,7 +36,7 @@ class ContactsListPage extends StatelessWidget {
               SnackBar(
                 content: Text(
                   error,
-                  style: TextStyle(color: Colors.white),
+                  style: const TextStyle(color: Colors.white),
                 ),
                 backgroundColor: Colors.red,
               ),

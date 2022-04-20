@@ -45,6 +45,23 @@ class HomePage extends StatelessWidget {
               ),
             ],
           ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              button(
+                label: 'Contacts Cubit',
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/contacts/cubit');
+                },
+              ),
+              // button(
+              //   label: 'Register',
+              //   onPressed: () {
+              //     Navigator.of(context).pushNamed('/contact/register');
+              //   },
+              // ),
+            ],
+          ),
         ],
       ),
     );

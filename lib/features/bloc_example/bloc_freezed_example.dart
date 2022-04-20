@@ -15,9 +15,9 @@ class BlocFreezedExample extends StatelessWidget {
         onPressed: () {
           context
               .read<ExampleFreezedBloc>()
-              .add(ExampleFreezedEvent.addName('Alonso'));
+              .add(const ExampleFreezedEvent.addName('Alonso'));
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
       body: BlocListener<ExampleFreezedBloc, ExampleFreezedState>(
         listener: (context, state) {

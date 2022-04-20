@@ -12,7 +12,7 @@ Aplicação simples criada na Academia do Flutter para estudar Bloc
    - [👨🏽‍💻 Desenvolvimento](#Sobre-o-desenvolvimento)
    - [📱 Screenshots](#Screenshots)
    - [❓ Desafios](#Desafios)
-   - [🛠 Ferramentas](#Ferramentas_utilizadas)
+   - [🛠 Ferramentas](#Ferramentas-utilizadas)
    - [📞 Contato](#-d%C3%BAvida-cr%C3%ADtica-elogio-ou-sugest%C3%A3o)
    - [📝 Licença](#LICENSE)
 
