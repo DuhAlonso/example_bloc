@@ -65,6 +65,12 @@ class ContactListCubitPage extends StatelessWidget {
                                   color: Colors.red,
                                 ),
                               ),
+                              onTap: () async {
+                                await Navigator.pushNamed(
+                                    context, '/contacts/cubit/update',
+                                    arguments: contact);
+                                context.read<ContactListCubit>().findAll();
+                              },
                             );
                           },
                         ),

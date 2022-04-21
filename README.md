@@ -34,15 +34,15 @@ Aplicação simples criada na Academia do Flutter para estudar Bloc
 
 <h2>Screenshots</h2>
 <p>
-
-<img src="https://github.com/DuhAlonso/example_bloc/blob/main/screenshots/Screen02.png" width="250"> 
+<img src="https://github.com/DuhAlonso/example_bloc/blob/main/screenshots/Screen02.png" width="250"> <img src="https://github.com/DuhAlonso/example_bloc/blob/main/screenshots/contact_book_bloc_cubit.gif
+" width="250"> 
 </p>
 
 <h2>Sobre o desenvolvimento</h2>
 <p>
-Sinceramente achei bem trabalhoso criar a estrutura do Bloc, mas depois de aprender podemos usar a opção dele criar sozinho, que já vai poupar um bom tempo. O conceito dele não é difícil de entender, e com o cubit fica mais fácil de utilizá-lo. Ele trabalha basicamente com eventos, ao emitimos um, podemos alterar o estado da tela.
+Sinceramente achei bem trabalhoso criar as estruturas do Bloc, mas depois de aprender podemos usar a opção dele criar sozinho, que já vai poupar um bom tempo. O conceito dele não é difícil de entender, e com o cubit fica mais fácil de utilizá-lo. Enquanto o cubit podemos chamar direto as funções, o bloc trabalha basicamente com eventos, ao emitimos um, podemos alterar o estado da tela.
 
-É sempre bom saber várias maneiras de chegar ao "mesmo resultado", primeiro foi o Provider, agora o Bloc e logo mais o MobX e GetX os principais gerenciadores de estados utilizados no flutter.
+É sempre bom saber várias maneiras de chegar ao "mesmo resultado", primeiro foi o Provider, agora o Bloc e logo mais o MobX e GetX, os principais gerenciadores de estados utilizados no flutter.
 </p>
 
 <h2>Desafios</h2>
@@ -70,6 +70,12 @@ Desafio 02 - Removendo contato:
 <img src="https://github.com/DuhAlonso/example_bloc/blob/main/screenshots/ListTile.png" width="500">
 
 <img src="https://github.com/DuhAlonso/example_bloc/blob/main/screenshots/MultiProvider.png" width="500">
+
+Desafio 03 - Criar toda estrutura de update e create com Cubit:
+
+<a href="https://github.com/DuhAlonso/example_bloc/blob/main/lib/features/contact_cubit/register/register_cubit_page.dart">Create</a>
+
+<a href="https://github.com/DuhAlonso/example_bloc/blob/main/lib/features/contact_cubit/update/contact_update_cubit_page.dart">Update</a>
 
 </p>
 

@@ -6,6 +6,8 @@ import 'package:contact_book/features/contact_cubit/list/cubit/contact_list_cubi
 import 'package:contact_book/features/contact_cubit/list/contact_list_cubit_page.dart';
 import 'package:contact_book/features/contact_cubit/register/cubit/contact_register_cubit.dart';
 import 'package:contact_book/features/contact_cubit/register/register_cubit_page.dart';
+import 'package:contact_book/features/contact_cubit/update/contact_update_cubit_page.dart';
+import 'package:contact_book/features/contact_cubit/update/cubit/contact_update_cubit.dart';
 import 'package:contact_book/features/contacts/delete/bloc/bloc/contact_delete_bloc.dart';
 import 'package:contact_book/features/contacts/list/bloc/contact_list_bloc.dart';
 import 'package:contact_book/features/contacts/list/contacts_list_page.dart';
@@ -79,6 +81,18 @@ void main() {
               repository: context.read(),
             ),
             child: const RegisterCubitPage(),
+          );
+        },
+        '/contacts/cubit/update': (context) {
+          final contact =
+              ModalRoute.of(context)?.settings.arguments as ContactModel;
+          return BlocProvider(
+            create: (context) => ContactUpdateCubit(
+              repository: context.read(),
+            ),
+            child: ContactUpdateCubitPage(
+              contact: contact,
+            ),
           );
         }
       },

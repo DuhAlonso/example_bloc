@@ -30,10 +30,10 @@ class _ContactUpdatePageState extends State<ContactUpdatePage> {
   }
 
   @override
-  void deactivate() {
+  void dispose() {
     _emailEC.dispose();
     _nameEC.dispose();
-    super.deactivate();
+    super.dispose();
   }
 
   @override
