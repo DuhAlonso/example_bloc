@@ -33,9 +33,7 @@ Aplicação simples criada na Academia do Flutter para estudar Bloc
 </p>
 
 <h2>Screenshots</h2>
-<img src="https://github.com/DuhAlonso/example_bloc/blob/main/screenshots/contact_book_bloc_cubit.gif
-" width="250"> 
-<img src="https://github.com/DuhAlonso/example_bloc/blob/main/screenshots/Screen02.png" width="250"> 
+<img src="https://github.com/DuhAlonso/example_bloc/blob/main/screenshots/contact_book_bloc_cubit.gif" width="250"> <img src="https://github.com/DuhAlonso/example_bloc/blob/main/screenshots/Screen02.png" width="250"> 
 <p>
 </p>
 
