@@ -3,7 +3,9 @@ import 'package:contact_book/features/bloc_example/bloc_example_page.dart';
 import 'package:contact_book/features/bloc_example/bloc_freezed/example_freezed_bloc.dart';
 import 'package:contact_book/features/bloc_example/bloc_freezed_example.dart';
 import 'package:contact_book/features/contact_cubit/list/cubit/contact_list_cubit.dart';
-import 'package:contact_book/features/contact_cubit/list/cubit/contact_list_cubit_page.dart';
+import 'package:contact_book/features/contact_cubit/list/contact_list_cubit_page.dart';
+import 'package:contact_book/features/contact_cubit/register/cubit/contact_register_cubit.dart';
+import 'package:contact_book/features/contact_cubit/register/register_cubit_page.dart';
 import 'package:contact_book/features/contacts/delete/bloc/bloc/contact_delete_bloc.dart';
 import 'package:contact_book/features/contacts/list/bloc/contact_list_bloc.dart';
 import 'package:contact_book/features/contacts/list/contacts_list_page.dart';
@@ -71,6 +73,14 @@ void main() {
             child: const ContactListCubitPage(),
           );
         },
+        '/contacts/cubit/register': (context) {
+          return BlocProvider(
+            create: (context) => ContactRegisterCubit(
+              repository: context.read(),
+            ),
+            child: const RegisterCubitPage(),
+          );
+        }
       },
     ),
   ));
